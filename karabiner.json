@@ -1,0 +1,101 @@
+{
+  "description": "enable simple birman layout",
+  "manipulators": [
+    {
+      "conditions": [
+        {
+          "input_sources": [
+            {
+              "input_source_id": "com.apple.keylayout.Russian"
+            }
+          ],
+          "type": "input_source_if"
+        }
+      ],
+      "from": {
+        "key_code": "right_option",
+        "modifiers": {
+          "optional": [
+            "any"
+          ]
+        }
+      },
+      "to": [
+        {
+          "set_variable": {
+            "name": "input_source_was_russian",
+            "value": 1
+          }
+        },
+        {
+          "set_variable": {
+            "name": "input_source_was_colemak",
+            "value": 0
+          }
+        },
+        {
+          "select_input_source": {
+            "input_source_id": "org.unknown.keylayout.simplebirman"
+          }
+        }
+      ],
+      "to_after_key_up": [
+        {
+          "select_input_source": {
+            "input_source_id": "com.apple.keylayout.Russian"
+          }
+        }
+      ],
+      "to_if_alone": [],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "input_sources": [
+            {
+              "input_source_id": "com.apple.keylayout.Colemak"
+            }
+          ],
+          "type": "input_source_if"
+        }
+      ],
+      "from": {
+        "key_code": "right_option",
+        "modifiers": {
+          "optional": [
+            "any"
+          ]
+        }
+      },
+      "to": [
+        {
+          "set_variable": {
+            "name": "input_source_was_russian",
+            "value": 0
+          }
+        },
+        {
+          "set_variable": {
+            "name": "input_source_was_colemak",
+            "value": 1
+          }
+        },
+        {
+          "select_input_source": {
+            "input_source_id": "org.unknown.keylayout.simplebirman"
+          }
+        }
+      ],
+      "to_after_key_up": [
+        {
+          "select_input_source": {
+            "input_source_id": "com.apple.keylayout.Colemak"
+          }
+        }
+      ],
+      "to_if_alone": [],
+      "type": "basic"
+    }
+  ]
+}
